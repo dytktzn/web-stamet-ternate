@@ -13,7 +13,7 @@ export default function ProfilStruktur() {
         <div className="max-w-5xl mx-auto">
           <div className="flex justify-center items-center w-full">
             <img 
-              src="https://miniapps.my.id/project012/assets/sruktur_organisasi.jpeg" 
+              src="public/struktur_organisasi.jpeg" 
               alt="Struktur Organisasi" 
               className="w-full max-w-4xl rounded-2xl shadow-md object-contain"
             />

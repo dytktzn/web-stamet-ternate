@@ -1,3 +1,5 @@
+import strukturImg from "../assets/struktur_organisasi.jpeg";
+
 export default function ProfilStruktur() {
   return (
     <div className="fade-in">
@@ -12,8 +14,9 @@ export default function ProfilStruktur() {
       <section className="py-16 px-6">
         <div className="max-w-5xl mx-auto">
           <div className="flex justify-center items-center w-full">
+            {/* 2. Panggil nama import-nya di sini tanpa tanda kutip */}
             <img 
-              src="public/struktur_organisasi.jpeg" 
+              src={strukturImg} 
               alt="Struktur Organisasi" 
               className="w-full max-w-4xl rounded-2xl shadow-md object-contain"
             />

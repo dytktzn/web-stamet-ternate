@@ -39,7 +39,7 @@ const App = () => (
     <TooltipProvider>
       <Toaster />
       <Sonner />
-      <BrowserRouter>
+      <BrowserRouter basename="/web-stamet-ternate/">
         <Suspense fallback={<PageLoader />}>
           <Routes>
             <Route element={<Layout />}>

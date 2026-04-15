@@ -319,6 +319,9 @@ export default function Beranda() {
       {/* Visualisasi Cuaca dan Iklim */}
       <VisualisasiCuacaSection />
 
+      {/* YouTube Video Section */}
+      <YouTubeSection />
+
       {/* News Section */}
       {news.length > 0 && (
         <section className="py-20 px-6">
@@ -446,6 +449,86 @@ export default function Beranda() {
         </div>
       )}
     </div>
+  );
+}
+
+function YouTubeSection() {
+  const HERO_VIDEO_ID = "3bUu9M6f7EY";
+  const CHANNEL_ID = "UC8Do0tOnpnz1ydOZV0XKS3g";
+  const [latestVideos, setLatestVideos] = useState<{ id: string; title: string; thumb: string }[]>([]);
+  const [activeVideo, setActiveVideo] = useState(HERO_VIDEO_ID);
+
+  useEffect(() => {
+    const feedUrl = `https://api.allorigins.win/raw?url=${encodeURIComponent(`https://www.youtube.com/feeds/videos.xml?channel_id=${CHANNEL_ID}`)}`;
+    fetch(feedUrl)
+      .then(res => res.text())
+      .then(xml => {
+        const parser = new DOMParser();
+        const doc = parser.parseFromString(xml, "text/xml");
+        const entries = doc.querySelectorAll("entry");
+        const videos: { id: string; title: string; thumb: string }[] = [];
+        entries.forEach((entry, i) => {
+          if (i >= 5) return;
+          const videoId = entry.querySelector("videoId")?.textContent || "";
+          const title = entry.querySelector("title")?.textContent || "";
+          const thumb = `https://i.ytimg.com/vi/${videoId}/mqdefault.jpg`;
+          if (videoId) videos.push({ id: videoId, title, thumb });
+        });
+        setLatestVideos(videos);
+      })
+      .catch(() => {});
+  }, []);
+
+  return (
+    <section className="py-20 px-6 bg-slate-900">
+      <div className="max-w-7xl mx-auto">
+        <h2 className="text-3xl font-extrabold text-white mb-2">Video & Sosialisasi</h2>
+        <p className="text-slate-400 mb-10 text-sm">Informasi terkini dalam format video dari kanal resmi BMKG Stasiun Babullah Ternate</p>
+
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+          {/* Hero Video Player */}
+          <div className="lg:col-span-2">
+            <div className="relative w-full rounded-2xl overflow-hidden shadow-2xl" style={{ paddingBottom: '56.25%' }}>
+              <iframe
+                className="absolute inset-0 w-full h-full"
+                src={`https://www.youtube.com/embed/${activeVideo}?rel=0`}
+                title="Video BMKG"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowFullScreen
+              />
+            </div>
+          </div>
+
+          {/* Latest Videos List */}
+          <div className="space-y-3 max-h-[450px] overflow-y-auto pr-2 custom-scrollbar">
+            <h3 className="text-sm font-bold text-slate-400 uppercase tracking-widest mb-3">Video Terbaru</h3>
+            {latestVideos.length === 0 ? (
+              <div className="text-slate-500 text-sm py-4">Memuat video...</div>
+            ) : (
+              latestVideos.map((v) => (
+                <button
+                  key={v.id}
+                  onClick={() => setActiveVideo(v.id)}
+                  className={`w-full flex gap-3 p-2 rounded-xl text-left transition-all ${activeVideo === v.id ? 'bg-blue-600/20 ring-1 ring-blue-500' : 'hover:bg-white/5'}`}
+                >
+                  <div className="w-28 h-16 flex-shrink-0 rounded-lg overflow-hidden relative">
+                    <img src={v.thumb} alt={v.title} className="w-full h-full object-cover" />
+                    <div className="absolute inset-0 flex items-center justify-center bg-black/30">
+                      <div className="w-8 h-8 bg-white/90 rounded-full flex items-center justify-center">
+                        <div className="w-0 h-0 border-t-[6px] border-t-transparent border-b-[6px] border-b-transparent border-l-[10px] border-l-slate-900 ml-0.5" />
+                      </div>
+                    </div>
+                  </div>
+                  <div className="flex-1 min-w-0">
+                    <p className={`text-sm font-semibold line-clamp-2 ${activeVideo === v.id ? 'text-blue-400' : 'text-slate-200'}`}>{v.title}</p>
+                  </div>
+                </button>
+              ))
+            )}
+          </div>
+        </div>
+      </div>
+    </section>
   );
 }
 

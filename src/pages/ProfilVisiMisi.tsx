@@ -18,7 +18,7 @@ export default function ProfilVisiMisi() {
                 <Target className="w-6 h-6" />
               </div>
               <h3 className="text-2xl font-bold text-slate-900 mb-4">Visi</h3>
-              <p className="text-lg text-slate-600 font-medium italic">"Mewujudkan BMKG yang Handal, Tanggap dan Mampu dalam rangka mendukung Keselamatan Masyarakat dan Keberhasilan Pembangunan Nasional."</p>
+              <p className="text-lg text-slate-600 font-medium italic">"Terwujudnya pelayanan Jasa dan Informasi Meteorologi Penerbangan, Meteorologi Maritim serta pelayanan Klimatologi yang Cepat, Tepat, Akurat, berjangkauan luas dan dapat dipahami di Stasiun Meteorologi Kelas I Sultan Baabullah Ternate Provinsi Maluku Utara."</p>
             </div>
             <div className="bg-white p-8 rounded-3xl shadow-sm border border-slate-100">
               <div className="w-12 h-12 bg-green-100 text-green-600 rounded-2xl flex items-center justify-center mb-6">
@@ -26,7 +26,13 @@ export default function ProfilVisiMisi() {
               </div>
               <h3 className="text-2xl font-bold text-slate-900 mb-4">Misi</h3>
               <ul className="space-y-4">
-                {["Mengamati dan memahami fenomena MKG.", "Menyediakan data dan informasi MKG yang handal.", "Berpartisipasi aktif dalam kegiatan internasional."].map((m, i) => (
+                {[
+                  "Mengamati dan memahami fenomena meteorologi di Stasiun Meteorologi Sultan Baabullah Ternate.",
+                  "Menyediakan data dan pelayanan informasi meteorologi Penerbangan yang handal dan terpercaya di Bandar Udara Sultan Baabullah Ternate.",
+                  "Meningkatkan pemahaman informasi cuaca penerbangan untuk kepentingan keselamatan penerbangan di Bandar Udara Sultan Baabullah Ternate.",
+                  "Meningkatnya Layanan Informasi Meteorologi Maritim yang berkualitas.",
+                  "Meningkatnya Layanan Informasi Klimatologi yang berkualitas.",
+                ].map((m, i) => (
                   <li key={i} className="flex items-start gap-3">
                     <CheckCircle className="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" />
                     <span className="text-slate-600">{m}</span>

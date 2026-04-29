@@ -9,7 +9,6 @@ const cuacaTabs = [
   { id: 'prakiraan', label: 'Prakiraan Cuaca Kelurahan', icon: <CloudRain className="w-4 h-4" /> },
   { id: 'peringatan', label: 'Peringatan Dini Cuaca Ekstreme', icon: <AlertTriangle className="w-4 h-4" /> },
   { id: 'dwt', label: 'Digital Weather for Traffic', icon: <Monitor className="w-4 h-4" /> },
-  { id: 'buletin', label: 'Buletin Bulanan', icon: <FileText className="w-4 h-4" /> },
 ];
 
 export default function CuacaPublik() {
@@ -28,7 +27,7 @@ export default function CuacaPublik() {
         <div className="max-w-7xl mx-auto text-center">
           <span className="text-blue-600 font-bold uppercase tracking-widest text-xs mb-2 block">Public Weather</span>
           <h1 className="text-4xl md:text-5xl font-extrabold text-slate-900 mb-4">Prakiraan Cuaca Publik</h1>
-          <p className="text-slate-500 max-w-2xl mx-auto text-lg">Informasi prakiraan cuaca, peringatan dini, dan buletin bulanan.</p>
+          <p className="text-slate-500 max-w-2xl mx-auto text-lg">Informasi prakiraan cuaca, peringatan dini, dan cuaca lalu lintas.</p>
         </div>
       </section>
 
@@ -38,7 +37,6 @@ export default function CuacaPublik() {
             {tab === 'prakiraan' && <PrakiraanTab />}
             {tab === 'peringatan' && <PeringatanTab />}
             {tab === 'dwt' && <DWTTab />}
-            {tab === 'buletin' && <BuletinTab />}
           </SidePanelLayout>
         </div>
       </section>
@@ -420,56 +418,6 @@ function DWTTab() {
   );
 }
 
-/* ====== Buletin Bulanan ====== */
-function BuletinTab() {
-  const buletins = [
-    { id: 1, title: "Buletin Prakiraan Cuaca & Iklim Bulan Maret 2026", cover: "https://miniapps.my.id/project012/assets/buletin/cover-mar2026.jpg", date: "Maret 2026", url: "#" },
-    { id: 2, title: "Buletin Prakiraan Cuaca & Iklim Bulan Februari 2026", cover: "https://miniapps.my.id/project012/assets/buletin/cover-feb2026.jpg", date: "Februari 2026", url: "#" },
-    { id: 3, title: "Buletin Prakiraan Cuaca & Iklim Bulan Januari 2026", cover: "https://miniapps.my.id/project012/assets/buletin/cover-jan2026.jpg", date: "Januari 2026", url: "#" },
-    { id: 4, title: "Buletin Prakiraan Cuaca & Iklim Bulan Desember 2025", cover: "https://miniapps.my.id/project012/assets/buletin/cover-des2025.jpg", date: "Desember 2025", url: "#" },
-    { id: 5, title: "Buletin Prakiraan Cuaca & Iklim Bulan November 2025", cover: "https://miniapps.my.id/project012/assets/buletin/cover-nov2025.jpg", date: "November 2025", url: "#" },
-  ];
-
-  const hero = buletins[0];
-  const history = buletins.slice(1);
-
-  return (
-    <div className="space-y-8">
-      {/* Hero Buletin */}
-      <a href={hero.url} target="_blank" rel="noopener noreferrer" className="block group">
-        <div className="relative h-[300px] md:h-[400px] overflow-hidden rounded-[2rem] shadow-md bg-slate-100">
-          <img src={hero.cover} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" alt={hero.title}
-            onError={(e) => { e.currentTarget.style.display = 'none'; }} />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
-          <div className="absolute bottom-8 left-8 right-8 text-white">
-            <span className="px-3 py-1 bg-blue-600 rounded-full text-[10px] font-bold uppercase tracking-wider mb-3 inline-block">Terbaru - {hero.date}</span>
-            <h3 className="text-xl md:text-2xl font-bold leading-tight">{hero.title}</h3>
-          </div>
-        </div>
-      </a>
-
-      {/* History */}
-      <div>
-        <h4 className="text-lg font-bold text-slate-800 mb-4">Buletin Sebelumnya</h4>
-        <div className="space-y-3">
-          {history.map(b => (
-            <a key={b.id} href={b.url} target="_blank" rel="noopener noreferrer"
-              className="flex gap-4 bg-white rounded-2xl border border-slate-200 overflow-hidden hover:shadow-md transition-all group">
-              <div className="w-32 h-24 flex-shrink-0 bg-slate-100 overflow-hidden">
-                <img src={b.cover} className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110" alt={b.title}
-                  onError={(e) => { e.currentTarget.style.display = 'none'; }} />
-              </div>
-              <div className="flex flex-col justify-center py-3 pr-4">
-                <span className="text-[10px] text-blue-600 font-bold uppercase mb-1">{b.date}</span>
-                <h4 className="text-sm font-bold text-slate-800 line-clamp-2 group-hover:text-blue-600 transition-colors">{b.title}</h4>
-              </div>
-            </a>
-          ))}
-        </div>
-      </div>
-    </div>
-  );
-}
 
 function StatBox({ label, value }: { label: string; value: string }) {
   return (

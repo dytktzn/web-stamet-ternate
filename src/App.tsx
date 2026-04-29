@@ -53,6 +53,7 @@ const App = () => (
               <Route path="/cuaca-penerbangan" element={<CuacaPenerbangan />} />
               <Route path="/cuaca-maritim" element={<CuacaMaritim />} />
               <Route path="/iklim" element={<Iklim />} />
+              <Route path="/instrumentasi" element={<Instrumentasi />} />
               <Route path="/satelit-cuaca" element={<SatelitCuaca />} />
               <Route path="/peringatan" element={<CuacaPublik />} />
               <Route path="/gempa" element={<GempaBumi />} />

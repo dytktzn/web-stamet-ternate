@@ -116,6 +116,22 @@ const buletinData: Record<string, { hero: BuletinItem; list: BuletinItem[] }> = 
       { title: "Kaleidoskop Iklim Januari 2026", date: "Januari 2026", cover: PLACEHOLDER_THUMB, originalImage: PLACEHOLDER_ORIGINAL, description: "", fileUrl: PLACEHOLDER_PDF },
     ],
   },
+  buletin: {
+    hero: {
+      title: "Buletin Prakiraan Cuaca & Iklim Bulan Maret 2026",
+      date: "Maret 2026",
+      cover: "https://miniapps.my.id/project012/assets/buletin/cover-mar2026.jpg",
+      originalImage: "https://miniapps.my.id/project012/assets/buletin/cover-mar2026.jpg",
+      description: "Buletin bulanan berisi prakiraan cuaca dan iklim untuk wilayah Maluku Utara.",
+      fileUrl: PLACEHOLDER_PDF,
+    },
+    list: [
+      { title: "Buletin Prakiraan Cuaca & Iklim Bulan Februari 2026", date: "Februari 2026", cover: "https://miniapps.my.id/project012/assets/buletin/cover-feb2026.jpg", originalImage: "https://miniapps.my.id/project012/assets/buletin/cover-feb2026.jpg", description: "", fileUrl: PLACEHOLDER_PDF },
+      { title: "Buletin Prakiraan Cuaca & Iklim Bulan Januari 2026", date: "Januari 2026", cover: "https://miniapps.my.id/project012/assets/buletin/cover-jan2026.jpg", originalImage: "https://miniapps.my.id/project012/assets/buletin/cover-jan2026.jpg", description: "", fileUrl: PLACEHOLDER_PDF },
+      { title: "Buletin Prakiraan Cuaca & Iklim Bulan Desember 2025", date: "Desember 2025", cover: "https://miniapps.my.id/project012/assets/buletin/cover-des2025.jpg", originalImage: "https://miniapps.my.id/project012/assets/buletin/cover-des2025.jpg", description: "", fileUrl: PLACEHOLDER_PDF },
+      { title: "Buletin Prakiraan Cuaca & Iklim Bulan November 2025", date: "November 2025", cover: "https://miniapps.my.id/project012/assets/buletin/cover-nov2025.jpg", originalImage: "https://miniapps.my.id/project012/assets/buletin/cover-nov2025.jpg", description: "", fileUrl: PLACEHOLDER_PDF },
+    ],
+  },
 };
 
 const iklimTabs = [
@@ -126,6 +142,7 @@ const iklimTabs = [
   { id: "hth", label: "Hari Tanpa Hujan (HTH)" },
   { id: "spi", label: "Standardized Precipitation Index (SPI)" },
   { id: "kaleidoskop", label: "Kaleidoskop Bulanan" },
+  { id: "buletin", label: "Buletin Bulanan" },
 ];
 
 function handleDownload(url: string, filename: string) {

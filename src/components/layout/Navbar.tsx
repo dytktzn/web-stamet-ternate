@@ -16,6 +16,7 @@ const navItems = {
     { label: "Informasi Iklim", to: "/iklim" },
     { label: "Gempa Bumi & Tsunami", to: "/gempa" },
     { label: "Satelit Cuaca", to: "/satelit-cuaca" },
+    { label: "Instrumentasi", to: "/instrumentasi" },
     { label: "Media Publikasi", to: "/media" },
   ],
   zi: [

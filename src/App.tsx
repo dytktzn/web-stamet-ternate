@@ -15,6 +15,7 @@ const CuacaPublik = lazy(() => import("@/pages/CuacaPublik"));
 const CuacaPenerbangan = lazy(() => import("@/pages/CuacaPenerbangan"));
 const CuacaMaritim = lazy(() => import("@/pages/CuacaMaritim"));
 const Iklim = lazy(() => import("@/pages/Iklim"));
+const Instrumentasi = lazy(() => import("@/pages/Instrumentasi"));
 const SatelitCuaca = lazy(() => import("@/pages/SatelitCuaca"));
 const GempaBumi = lazy(() => import("@/pages/GempaBumi"));
 const MediaPublikasi = lazy(() => import("@/pages/MediaPublikasi"));
@@ -39,7 +40,7 @@ const App = () => (
     <TooltipProvider>
       <Toaster />
       <Sonner />
-      <BrowserRouter basename="/web-stamet-ternate/">
+      <BrowserRouter>
         <Suspense fallback={<PageLoader />}>
           <Routes>
             <Route element={<Layout />}>
@@ -52,6 +53,7 @@ const App = () => (
               <Route path="/cuaca-penerbangan" element={<CuacaPenerbangan />} />
               <Route path="/cuaca-maritim" element={<CuacaMaritim />} />
               <Route path="/iklim" element={<Iklim />} />
+              <Route path="/instrumentasi" element={<Instrumentasi />} />
               <Route path="/satelit-cuaca" element={<SatelitCuaca />} />
               <Route path="/peringatan" element={<CuacaPublik />} />
               <Route path="/gempa" element={<GempaBumi />} />
